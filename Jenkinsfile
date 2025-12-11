@@ -11,7 +11,7 @@ pipeline {
         IMAGE_TAG = "v${BUILD_NUMBER}" 
         
         // Git 설정
-        GIT_URL = 'https://github.com/JEONGHO0316/final_project.git'
+        GIT_URL = 'https://github.com/JEONGHO0316/Final_project_Jenkins.git'
         GIT_BRANCH = 'main'
         GITHUB_CRED_ID = 'github-access-token' 
     }
@@ -74,7 +74,7 @@ pipeline {
                         sh "git add k8s/was-deployment.yaml"
                         sh "git commit -m 'GitOps: Deploy new image version ${IMAGE_TAG} by Jenkins'"
                         // 인증 정보 포함해서 Push
-                        sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/JEONGHO0316/final_project.git HEAD:${GIT_BRANCH}"
+                        sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/JEONGHO0316/Final_project_Jenkins.git HEAD:${GIT_BRANCH}"
                     }
                 }
             }
