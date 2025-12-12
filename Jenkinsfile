@@ -64,8 +64,8 @@ pipeline {
 
                     // YAML 파일 수정 (sed 사용)
                     // 주의: 기존 이미지 주소를 찾아서 새 태그로 변경
-                    sh "sed -i 's|image: .*${ECR_REPOSITORY}:.*|image: ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}|g' k8s/was-deployment.yaml"
-                    
+                    // 기존에 petclinic-app 이라고 적혀있든 jenkins 라고 적혀있든, image: 로 시작하는 줄을 찾아서 교체
+                    sh "sed -i 's|image: .*dkr.ecr.*|image: ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}|g' k8s/was-deployment.yaml"
                     // 수정 확인
                     sh "cat k8s/was-deployment.yaml"
 
